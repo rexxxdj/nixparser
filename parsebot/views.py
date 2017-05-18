@@ -2,11 +2,19 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
+import json
 
+def __unicode__(self):
+        return unicode(self.task)
+    
 # Create your views here.
 def parsed_list(request):
-	posts = ()
-	'''posts = (
+    datafile = 'parsebot/nix.json'
+    with open(datafile,'r') as f:
+        data = json.load(open(f,'r'))
+    posts = ()
+    print type(data)
+    '''posts = (
 		{"rownumber": 1,
  "title": "Google.ai",
  "autor": "rbanffy",
@@ -37,6 +45,4 @@ def parsed_list(request):
  "url": "https://jsonfeed.org/2017/05/17/announcing_json_feed",
  "site": "jsonfeed.org",
  })'''
-
-
-	return render(request, 'index.html', {"posts": posts})
+    return render(request, 'index.html', {"posts": posts})
